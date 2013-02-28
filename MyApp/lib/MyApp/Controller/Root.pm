@@ -1,4 +1,4 @@
-package Hello::Controller::Root;
+package MyApp::Controller::Root;
 use Moose;
 use namespace::autoclean;
 
@@ -12,7 +12,7 @@ __PACKAGE__->config(namespace => '');
 
 =head1 NAME
 
-Hello::Controller::Root - Root Controller for Hello
+MyApp::Controller::Root - Root Controller for MyApp
 
 =head1 DESCRIPTION
 
@@ -43,13 +43,6 @@ sub default :Path {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
     $c->response->status(404);
-}
-
-sub hello :Global {
-        my ( $self, $c ) = @_;
-        #$c->response->body("Hello, World!");
-        $c->stash(template => 'hello.tt');
-        #$c->stash(template => 'hello.tt');
 }
 
 =head2 end
