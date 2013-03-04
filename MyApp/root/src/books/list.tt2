@@ -16,6 +16,7 @@
       <td>[% book.title %]</td>
       <td>[% book.rating %]</td>
      <td>
+<td>
   [% # NOTE: See Chapter 4 for a better way to do this!                      -%]
   [% # First initialize a TT variable to hold a list.  Then use a TT FOREACH -%]
   [% # loop in 'side effect notation' to load just the last names of the     -%]
@@ -31,6 +32,7 @@
   ([% tt_authors.size | html %])
   [% # Use another TT vmethod to join & print the names & comma separators   -%]
   [% tt_authors.join(', ') | html %]
+</td>
     </td>
   </tr>
 [% END -%]
