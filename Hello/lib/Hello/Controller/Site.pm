@@ -29,8 +29,9 @@ sub index :Path :Args(0) {
 
 sub test :Local {
         my ( $self, $c ) = @_;
+         
             $c->stash(username => 'John',
-            template => 'site/test.tt');
+                                  template => 'site/test.tt');
 }
 
 =head1 AUTHOR

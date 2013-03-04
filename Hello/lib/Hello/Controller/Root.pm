@@ -47,9 +47,8 @@ sub default :Path {
 
 sub hello :Global {
         my ( $self, $c ) = @_;
-        #$c->response->body("Hello, World!");
+         
         $c->stash(template => 'hello.tt');
-        #$c->stash(template => 'hello.tt');
 }
 
 =head2 end

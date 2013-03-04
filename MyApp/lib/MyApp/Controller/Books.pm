@@ -23,20 +23,16 @@ Catalyst Controller.
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-
     $c->response->body('Matched MyApp::Controller::Books in Books.');
 }
 
-=head2 list
- 
-Fetch all book objects and pass to books/list.tt2 in stash to be displayed
- 
-=cut
-
 sub list :Local {
-    my ( $self, $c ) = @_;
-    $c->stash(books => '');
-    $c->stash(template => 'books/list.tt2');
+    my ($self, $c) = @_;
+#    $c->stash(books => [$c->model('DB::Book')->all]);
+   $c->stash(template => 'books/list.tt2');
+#     $c->model('DB')->resultset('Book')
+#    $c->model('DB::Book')->search();
+
 }
 
 
