@@ -102,10 +102,11 @@ Composing rels: L</book_authors> -> book
 
 =cut
 
-__PACKAGE__->many_to_many(books => 'book_authors', 'book');
+__PACKAGE__->many_to_many("books", "book_authors", "book");
 
-# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-04 15:33:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RkDuZUSPWWBUHCs1KM0csg
+
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-03-04 20:54:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:a+VTBRXjonmyCauTe2S7ig
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

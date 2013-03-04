@@ -7,7 +7,7 @@ __PACKAGE__->config(
     schema_class => 'MyApp::Schema',
     
     connect_info => {
-        dsn => 'dbi:SQLite:/home/github/Hello/MyApp/db/myapp.db',
+        dsn => 'dbi:SQLite:db/myapp.db',
         user => '',
         password => '',
         on_connect_do => q{PRAGMA foreign_keys = ON},

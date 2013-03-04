@@ -84,12 +84,11 @@ Related object: L<MyApp::Schema::Result::Author>
 =cut
 
 __PACKAGE__->belongs_to(
-  "book",
-  "MyApp::Schema::Result::Book",
-  { id => "book_id" },
-  { join_type => "LEFT", on_delete => "CASCADE", on_update => "CASCADE" },
+  "author",
+  "MyApp::Schema::Result::Author",
+  { id => "author_id" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
-
 
 =head2 book
 
@@ -107,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-04 15:33:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:x1XgV1EUQYFh4TTXTveJdg
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-03-04 20:54:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pIbM0vMpdCwXMdNp7MBK/g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

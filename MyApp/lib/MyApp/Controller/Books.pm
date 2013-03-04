@@ -28,8 +28,8 @@ sub index :Path :Args(0) {
 
 sub list :Local {
     my ($self, $c) = @_;
-#    $c->stash(books => [$c->model('DB::Book')->all]);
-   $c->stash(template => 'books/list.tt2');
+    $c->stash(books => [$c->model('DB::Book')->all]);
+    $c->stash(template => 'books/list.tt2');
 #     $c->model('DB')->resultset('Book')
 #    $c->model('DB::Book')->search();
 

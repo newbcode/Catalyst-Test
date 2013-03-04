@@ -90,9 +90,9 @@ Related object: L<MyApp::Schema::Result::BookAuthor>
 __PACKAGE__->has_many(
   "book_authors",
   "MyApp::Schema::Result::BookAuthor",
-  "book_id",
+  { "foreign.book_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
 );
-
 
 =head2 authors
 
@@ -102,10 +102,11 @@ Composing rels: L</book_authors> -> author
 
 =cut
 
-__PACKAGE__->many_to_many(authors => 'book_authors', 'author');
+__PACKAGE__->many_to_many("authors", "book_authors", "author");
 
-# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-04 15:33:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PcQi7H42eNCnsrkSUcKETg
+
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-03-04 20:54:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PhO3oV/UnPpPEldoYbxFtQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
