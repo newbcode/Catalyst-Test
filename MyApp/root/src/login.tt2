@@ -1,5 +1,4 @@
 [% META title = 'Login' %]
- 
 <!-- Login form -->
 <form method="post" action="[% c.uri_for('/login') %]">
   <table>
@@ -16,12 +15,6 @@
     </tr>
   </table>
 </form>
-
-<p>
-  <a href="[% c.uri_for('/login') %]">Login</a>
-  <a href="[% c.uri_for(c.controller.action_for('form_create')) %]">Create</a>
-</p>
-
 <p>
 [%
    # This code illustrates how certain parts of the TT
@@ -41,5 +34,8 @@
    comments.
 %]
 </p>
-
+<p>
+  <a href="[% c.uri_for('/login') %]">Login</a>
+  <a href="[% c.uri_for(c.controller.action_for('form_create')) %]">Create</a>
+</p>
 

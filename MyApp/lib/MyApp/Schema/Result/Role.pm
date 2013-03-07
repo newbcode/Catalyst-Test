@@ -1,12 +1,12 @@
 use utf8;
-package MyApp::Schema::Result::Book;
+package MyApp::Schema::Result::Role;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-MyApp::Schema::Result::Book
+MyApp::Schema::Result::Role
 
 =cut
 
@@ -32,11 +32,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp");
 
-=head1 TABLE: C<book>
+=head1 TABLE: C<role>
 
 =cut
 
-__PACKAGE__->table("book");
+__PACKAGE__->table("role");
 
 =head1 ACCESSORS
 
@@ -46,24 +46,9 @@ __PACKAGE__->table("book");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 title
+=head2 role
 
   data_type: 'text'
-  is_nullable: 1
-
-=head2 rating
-
-  data_type: 'integer'
-  is_nullable: 1
-
-=head2 created
-
-  data_type: 'timestamp'
-  is_nullable: 1
-
-=head2 updated
-
-  data_type: 'timestamp'
   is_nullable: 1
 
 =cut
@@ -71,14 +56,8 @@ __PACKAGE__->table("book");
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "title",
+  "role",
   { data_type => "text", is_nullable => 1 },
-  "rating",
-  { data_type => "integer", is_nullable => 1 },
-  "created",
-  { data_type => "timestamp", is_nullable => 1 },
-  "updated",
-  { data_type => "timestamp", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -95,34 +74,34 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 book_authors
+=head2 user_roles
 
 Type: has_many
 
-Related object: L<MyApp::Schema::Result::BookAuthor>
+Related object: L<MyApp::Schema::Result::UserRole>
 
 =cut
 
 __PACKAGE__->has_many(
-  "book_authors",
-  "MyApp::Schema::Result::BookAuthor",
-  { "foreign.book_id" => "self.id" },
+  "user_roles",
+  "MyApp::Schema::Result::UserRole",
+  { "foreign.role_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 authors
+=head2 users
 
 Type: many_to_many
 
-Composing rels: L</book_authors> -> author
+Composing rels: L</user_roles> -> user
 
 =cut
 
-__PACKAGE__->many_to_many("authors", "book_authors", "author");
+__PACKAGE__->many_to_many("users", "user_roles", "user");
 
 
 # Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-07 17:57:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N6oAC+8VifhjBV/0mnv5MA
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CGPckkQPF3gMkmIMKePTmw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

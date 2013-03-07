@@ -16,17 +16,6 @@ Catalyst Controller.
 
 =cut
 
-
-=head2 index
-
-=cut
-
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-
-    $c->response->body('Matched MyApp::Controller::Login in Login.');
-}
-
 =head2 index
  
 Login logic
