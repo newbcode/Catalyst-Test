@@ -13,10 +13,6 @@ MyApp::Controller::Login - Catalyst Controller
 Catalyst Controller.
 
 =head1 METHODS
-
-=cut
-
-=head2 index
  
 Login logic
  
@@ -52,6 +48,7 @@ sub index :Path :Args(0) {
     $c->stash(template => 'login.tt2');
 }
 
+=cut
 
 =head1 AUTHOR
 

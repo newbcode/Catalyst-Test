@@ -26,11 +26,13 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::TimeStamp>
 
+=item * L<DBIx::Class::PassphraseColumn>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
 =head1 TABLE: C<users>
 
@@ -77,7 +79,6 @@ __PACKAGE__->table("users");
   is_nullable: 1
 
 =cut
-
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
@@ -135,17 +136,21 @@ Composing rels: L</user_roles> -> role
 __PACKAGE__->many_to_many("roles", "user_roles", "role");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-07 17:57:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:D/ANi363l0aAEC1sZMBBAA
-# many_to_many():
-#   args:
-#     1) Name of relationship, DBIC will create accessor with this name
-#     2) Name of has_many() relationship this many_to_many() is shortcut for
-#     3) Name of belongs_to() relationship in model class of has_many() above
-#   You must already have the has_many() defined to use a many_to_many().
-__PACKAGE__->many_to_many(roles => 'user_roles', 'role');
-
-
+# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-07 23:26:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/5tnEYVC3eBoQdqKMGmAlw
+# Have the 'password' column use a SHA-1 hash and 20-byte salt
+# with RFC 2307 encoding; Generate the 'check_password" method
+__PACKAGE__->add_columns(
+    'password' => {
+        passphrase       => 'rfc2307',
+        passphrase_class => 'SaltedDigest',
+        passphrase_args  => {
+            algorithm   => 'SHA-1',
+            salt_random => 20.
+        },
+        passphrase_check_method => 'check_password',
+    },
+);
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

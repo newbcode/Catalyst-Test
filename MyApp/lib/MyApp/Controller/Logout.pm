@@ -21,12 +21,6 @@ Catalyst Controller.
 
 =cut
 
-#sub index :Path :Args(0) {
-#    my ( $self, $c ) = @_;
-#
-#    $c->response->body('Matched MyApp::Controller::Logout in Logout.');
-#}
-
 =head2 index
  
 Logout logic
@@ -42,7 +36,6 @@ sub index :Path :Args(0) {
     # Send the user to the starting point
     $c->response->redirect($c->uri_for('/'));
 }
-
 
 =head1 AUTHOR
 

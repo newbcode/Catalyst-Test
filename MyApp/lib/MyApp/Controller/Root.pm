@@ -49,6 +49,8 @@ sub default :Path {
 
 Attempt to render a view, if needed.
 
+=cut
+
 =head2 auto
  
 Check if there is a user and, if not, forward to login page
@@ -78,14 +80,12 @@ sub auto :Private {
         # Redirect the user to the login page
         $c->response->redirect($c->uri_for('/login'));
         # Return 0 to cancel 'post-auto' processing and prevent use of application
-        return 0;
+        return 1;
     }
  
     # User found, so return 1 to continue with processing after this 'auto'
     return 1;
 }
-
-=cut
 
 sub end : ActionClass('RenderView') {}
 

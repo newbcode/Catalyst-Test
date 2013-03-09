@@ -26,11 +26,13 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::TimeStamp>
 
+=item * L<DBIx::Class::PassphraseColumn>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
 =head1 TABLE: C<book>
 
@@ -56,16 +58,6 @@ __PACKAGE__->table("book");
   data_type: 'integer'
   is_nullable: 1
 
-=head2 created
-
-  data_type: 'timestamp'
-  is_nullable: 1
-
-=head2 updated
-
-  data_type: 'timestamp'
-  is_nullable: 1
-
 =cut
 
 __PACKAGE__->add_columns(
@@ -75,10 +67,6 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "rating",
   { data_type => "integer", is_nullable => 1 },
-  "created",
-  { data_type => "timestamp", is_nullable => 1 },
-  "updated",
-  { data_type => "timestamp", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -121,8 +109,8 @@ Composing rels: L</book_authors> -> author
 __PACKAGE__->many_to_many("authors", "book_authors", "author");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-07 17:57:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N6oAC+8VifhjBV/0mnv5MA
+# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-03-07 23:26:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8pgbiBHWSU2NuSgnmr86lw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

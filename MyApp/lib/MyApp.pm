@@ -22,10 +22,12 @@ use Catalyst qw/
     Static::Simple
 
     Authentication
- 
+    StackTrace
     Session
     Session::Store::File
     Session::State::Cookie
+
+    StatusMessage
 
 /;
 
@@ -65,7 +67,8 @@ __PACKAGE__->config(
         default => {
             class           => 'SimpleDB',
             user_model      => 'DB::User',
-            password_type   => 'clear',
+#            password_type   => 'clear',
+            password_type   => 'self_check',
         },
     },
 );
@@ -73,7 +76,6 @@ __PACKAGE__->config(
 
 # Start the application
 __PACKAGE__->setup();
-
 
 =head1 NAME
 

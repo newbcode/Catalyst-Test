@@ -42,3 +42,4 @@ INSERT INTO book_author VALUES (3, 5);
 INSERT INTO book_author VALUES (4, 6);
 INSERT INTO book_author VALUES (4, 7);
 INSERT INTO book_author VALUES (5, 8);
+
