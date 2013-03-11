@@ -44,7 +44,8 @@ __PACKAGE__->config(
 
 __PACKAGE__->config(
     'View::HTML' => {
-        WRAPPER => 'wrapper',
+        TEMPLATE_EXTENSION => '.tt2',
+        WRAPPER => 'wrapper.tt2',
         INCLUDE_PATH => [
             __PACKAGE__->path_to('root/src'),
         ],
