@@ -42,9 +42,18 @@ __PACKAGE__->config(
     enable_catalyst_header => 1, # Send X-Catalyst header
 );
 
+__PACKAGE__->config(
+    'View::HTML' => {
+        WRAPPER => 'wrapper',
+        INCLUDE_PATH => [
+            __PACKAGE__->path_to('root/src'),
+        ],
+        render_die => 1,
+    },
+);
+
 # Start the application
 __PACKAGE__->setup();
-
 
 =head1 NAME
 
