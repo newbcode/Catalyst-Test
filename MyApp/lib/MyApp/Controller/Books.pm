@@ -170,24 +170,26 @@ sub object :Chained('base') :PathPart('id') :CaptureArgs(1) {
 Delete a book
  
 =cut
- 
+
 =head2 delete
- 
+
 Delete a book
- 
+
 =cut
- 
+
 sub delete :Chained('object') :PathPart('delete') :Args(0) {
     my ($self, $c) = @_;
- 
+
     # Use the book object saved by 'object' and delete it along
-    # with related 'book_author' entries
+    # with related 'book_authors' entries
     $c->stash->{object}->delete;
- 
-    # Redirect the user back to the list page with status msg as an arg
-    $c->response->redirect($c->uri_for($self->action_for('list'),
-        {status_msg => "Book deleted."}));
-}
+
+    # Use 'flash' to save information across requests until it's read
+    $c->flash->{status_msg} = "Book deleted";
+
+    # Redirect the user back to the list page
+    $c->response->redirect($c->uri_for($self->action_for('list')));
+} 
 
 sub list_recent :Chained('base') :PathPart('list_recent') :Args(1) {
     my ($self, $c, $mins) = @_;
@@ -197,31 +199,6 @@ sub list_recent :Chained('base') :PathPart('list_recent') :Args(1) {
     # retrieve books created within the last $min number of minutes
     $c->stash(books => [$c->model('DB::Book')
                             ->created_after(DateTime->now->subtract(minutes => $mins))]);
- 
-    # Set the TT template to use.  You will almost always want to do this
-    # in your action methods (action methods respond to user input in
-    # your controllers).
-    $c->stash(template => 'books/list.tt2');
-}
-
-=head2 list_recent_tcp
- 
-List recently created books
- 
-=cut
- 
-sub list_recent_tcp :Chained('base') :PathPart('list_recent_tcp') :Args(1) {
-    my ($self, $c, $mins) = @_;
- 
-    # Retrieve all of the book records as book model objects and store in the
-    # stash where they can be accessed by the TT template, but only
-    # retrieve books created within the last $min number of minutes
-    # AND that have 'TCP' in the title
-    $c->stash(books => [
-            $c->model('DB::Book')
-                ->created_after(DateTime->now->subtract(minutes => $mins))
-                ->search({title => {'like', '%TCP%'}})
-        ]);
  
     # Set the TT template to use.  You will almost always want to do this
     # in your action methods (action methods respond to user input in
