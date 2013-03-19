@@ -1,0 +1,13 @@
+[% INCLUDE header.tt title = 'The YARDBIRD Fan Club'; %]
+<div id="header">
+  <div id="header_title">The YARDBIRD Fan Club</div>
+  <div id="header_subtitle">Celebrating the NFL Rookie Sensation!</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="content_without_sidebar">
+    <h3>Homepage</h3>
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]

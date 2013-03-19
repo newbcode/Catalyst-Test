@@ -1,0 +1,28 @@
+[% INCLUDE header.tt title = 'The YARDBIRD Fan Club: Membership' %]
+<div id="header">
+  <div id="header_title">The YARDBIRD Fan Club</div>
+  <div id="header_subtitle">Celebrating the NFL Rookie Sensation!</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        <p>Join now!</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="content_with_sidebar">
+    <h3>Why become a member?</h3>
+    <p>With membership you can:
+    <ul>
+      <li>Post blog entries and comments.</li>
+      <li>Optionally provide your contact and other information to other users.</li>
+      <li>View other member's contact information.</li>
+    </ul>
+  </div>
+</div>
+
+<p><a href="[% c.uri_for_action('/member/create') %]">Join now!</a></p>
+[% INCLUDE footer.tt %]
